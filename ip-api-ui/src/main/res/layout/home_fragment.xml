@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.demo.ip.api.ui.home.HomeViewModel" />
+    </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/label_enter_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_title"
+                android:layout_marginBottom="@dimen/material_100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/til_ip" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_ip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:error='@{(viewModel.ipValidationError > 0) ? context.getString(viewModel.ipValidationError) : ""}'
+                app:errorEnabled="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_height="24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/material_100"
+                    android:hint="@string/ip_hint"
+                    android:onTextChanged="@{() -> viewModel.onIpChanged()}"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:text="@={viewModel.requestedIp}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.onNextClicked()}"
+                android:text="@string/btn_next_title"
+                android:layout_margin="@dimen/material_100"
+                app:layout_constraintTop_toBottomOf="@+id/til_ip"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

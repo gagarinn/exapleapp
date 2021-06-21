@@ -1,0 +1,5 @@
+include ':ip-api-data'
+include ':ip-api-domain'
+include ':ip-api-ui'
+include ':app'
+rootProject.name = "ExampleApp"

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_draph_ip_api"
+    app:startDestination="@id/destination_home_fragment">
+    <fragment
+        android:id="@+id/destination_home_fragment"
+        android:name="net.demo.ip.api.ui.home.HomeFragment"
+        tools:layout="@layout/home_fragment">
+
+        <action
+            android:id="@+id/action_home_to_ip_details"
+            app:destination="@id/destination_ip_details_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_ip_details_fragment"
+        android:name="net.demo.ip.api.ui.details.IpDetailsFragment"
+        tools:layout="@layout/fragment_ip_details">
+    </fragment>
+</navigation>

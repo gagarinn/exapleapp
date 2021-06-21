@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_title">Please enter the ip you are interested in</string>
+    <string name="btn_next_title">Next</string>
+    <string name="ip_hint">46.119.150.106</string>
+    <string name="ip_not_valid_error">Ip is not valid</string>
+    <string name="empty_field_error">Must be not empty</string>
+</resources>

@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion compileSdk_version
+
+    defaultConfig {
+        applicationId "net.demo.exampleapp"
+        minSdkVersion minSdk_version
+        targetSdkVersion targetSdk_version
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_ui_ktx_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_ui_ktx_version"
+
+    //    feature module
+    implementation project(':ip-api-ui')
+    implementation project(':ip-api-data')
+    implementation project(':ip-api-domain')
+
+//    di
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-androidx-viewmodel:$koin_version"
+
+    testImplementation "junit:junit:$junit_version"
+}
